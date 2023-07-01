@@ -6,7 +6,7 @@ searchRecipe = async(req, res) => {
     const searchTerm = req.body.searchTerm;
     const recipe = await Recipe.find({$or: [{name: {$regex: searchTerm, $options: 'i'}}, {description: {$regex: searchTerm, $options: 'i'}}]});
     // console.log(searchTerm);
-    res.render('search', { title: 'Cooking Blog - Search', recipe } );
+    res.render('search', { title: 'Rasoi Rang - Search', recipe } );
     // res.json(recipe);
   } catch (error) {
     res.status(500).send({message: error.message || "Error Occured" });

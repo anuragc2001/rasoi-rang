@@ -4,7 +4,7 @@ const Recipe = require('../models/recipe.model');
 submitRecipe = async(req, res) => {
   const infoErrorsObj = req.flash('infoErrors');
   const infoSubmitObj = req.flash('infoSubmit');
-  res.render('submit-recipe', { title: 'Cooking Blog - Submit Recipe', infoErrorsObj, infoSubmitObj  } );
+  res.render('submit-recipe', { title: 'Rasoi Rang - Submit Recipe', infoErrorsObj, infoSubmitObj  } );
 }
 
 submitRecipeOnPost = async(req, res) => {

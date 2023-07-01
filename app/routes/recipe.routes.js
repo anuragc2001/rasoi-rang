@@ -25,5 +25,14 @@ router.post('/search', searchRecipe);
 router.get('/submit-recipe', submitRecipe);
 router.post('/submit-recipe', submitRecipeOnPost);
 
+router.get('/about', (req, res) => {
+        res.render('about', { title: 'Rasoi Rang - About' } );
+});
+
+router.get('/contact', (req, res) => {
+        res.render('contact', { title: 'Rasoi Rang - Contact' } );
+});
+
+
  
 module.exports = router;

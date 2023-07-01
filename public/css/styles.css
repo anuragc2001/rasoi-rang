@@ -43,3 +43,19 @@ a { color: var(--bs-dark); }
   width: 100%;
   object-fit: cover;
 }
+
+footer{
+  display: table;
+  text-align: center;
+  margin-left: auto;
+  margin-right: auto;
+}
+.resize {
+  width: 400px;
+  height: auto;
+}
+
+.resize {
+  width: 300px;
+  height: auto;
+}

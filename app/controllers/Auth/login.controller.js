@@ -3,7 +3,7 @@ const bcrypt = require('bcryptjs');
 const passport = require('passport');
 
 getLogin = (req, res) => {
-    res.render('login', { title: 'Cooking Blog - Login' });
+    res.render('login', { title: 'Rasoi Rang - Login' });
     }
 
 postLogin = (req, res, next) => {
@@ -15,7 +15,7 @@ postLogin = (req, res, next) => {
     }
 
 getRegister = (req, res) => {
-    res.render('register', { title: 'Cooking Blog - Register' });
+    res.render('register', { title: 'Rasoi Rang - Register' });
     }
 
 postRegister = (req, res) => {
@@ -35,13 +35,13 @@ postRegister = (req, res) => {
     }
 
     if(errors.length > 0){
-        res.render('register', { title: 'Cooking Blog - Register', errors, name, email, password, password2 });
+        res.render('register', { title: 'Rasoi Rang - Register', errors, name, email, password, password2 });
     } else {
         User.findOne({ email: email })
         .then(user => {
             if(user){
                 errors.push({ msg: 'Email is already registered.' });
-                res.render('register', { title: 'Cooking Blog - Register', errors, name, email, password, password2 });
+                res.render('register', { title: 'Rasoi Rang - Register', errors, name, email, password, password2 });
             } else {
                 const newUser = new User({
                     name,

@@ -12,7 +12,7 @@ homepage = async(req, res) => {
 
     const food = { latest, thai, american, chinese };
 
-    res.render('index', { title: 'Cooking Blog - Home', categories, food } );
+    res.render('index', { title: 'Rasoi Rang - Home', categories, food } );
   } catch (error) {
     res.status(500).send({message: error.message || "Error Occured" });
   }
