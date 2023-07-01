@@ -4,6 +4,8 @@ const fileUpload = require('express-fileupload');
 const session = require('express-session');
 const cookieParser = require('cookie-parser');
 const flash = require('connect-flash');
+const recipeRoutes = require('./app/routes/recipe.routes')
+// const loginRoutes = require('./app/routes/login.routes')
 
 const app = express();
 const port = process.env.PORT || 3000;
@@ -27,8 +29,8 @@ app.use(fileUpload());
 app.set('layout', './layouts/main');
 app.set('view engine', 'ejs');
 
-const routes = require('./app/routes/recipe.routes')
 
-app.use('/', routes);
+app.use(recipeRoutes);
+// app.use('/', loginRoutes);
 
 app.listen(port, ()=> console.log(`Listening to port ${port}`));

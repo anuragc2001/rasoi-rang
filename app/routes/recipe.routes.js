@@ -10,7 +10,7 @@ const { searchRecipe } = require('../controllers/search.controller');
 
 const { homepage } = require('../controllers/homepage.controller');
 
-const { submitRecipe, submitRecipeOnPost } = require('../controllers/submit.controller');
+const { submitRecipe, submitRecipeOnPost } = require('../controllers/recipe.controller');
 
 router.get('/', homepage);
 
