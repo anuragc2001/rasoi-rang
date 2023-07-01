@@ -40,14 +40,15 @@ submitRecipeOnPost = async(req, res) => {
     
     await newRecipe.save();
 
-    res.redirect('/submit-recipe');
+    res.redirect('/explore-latest');
   } catch (error) {
     if(error.name === 'ValidationError'){
       req.flash('infoErrors', error);
+      res.redirect('/submit-recipe');
     } else {
       req.flash('infoSubmit', 'Recipe has been added.')
+      res.redirect('/explore-latest');
     }
-    res.redirect('/submit-recipe');
   }
 }
 
@@ -61,9 +62,8 @@ deleteRecipe = async(req, res) => {
 
 updateRecipe = async(req, res) => {
   try {
-    const res = await Recipe.updateOne({ name: 'New Recipe' }, { name: 'New Recipe Updated' });
-    res.n; // Number of documents matched
-    res.nModified; // Number of documents modified
+    const data = await Recipe.updateOne({ name: 'New Recipe' }, { name: 'New Recipe Updated' });
+    res.redirect('/explore-latest');
   } catch (error) {
     console.log(error);
   }
