@@ -1,19 +1,29 @@
 const express = require('express');
 const router = express.Router();
-const recipeController = require('../controllers/recipe.controller');
+const { exploreCategories, 
+        exploreCategoriesById,
+        exploreRecipe, 
+        exploreLatest, 
+        exploreRandom } = require('../controllers/explore.controller');
 
-/**
- * App Routes 
-*/
-router.get('/', recipeController.homepage);
-router.get('/recipe/:id', recipeController.exploreRecipe );
-router.get('/categories', recipeController.exploreCategories);
-router.get('/categories/:id', recipeController.exploreCategoriesById);
-router.post('/search', recipeController.searchRecipe);
-router.get('/explore-latest', recipeController.exploreLatest);
-router.get('/explore-random', recipeController.exploreRandom);
-router.get('/submit-recipe', recipeController.submitRecipe);
-router.post('/submit-recipe', recipeController.submitRecipeOnPost);
+const { searchRecipe } = require('../controllers/search.controller');
+
+const { homepage } = require('../controllers/homepage.controller');
+
+const { submitRecipe, submitRecipeOnPost } = require('../controllers/submit.controller');
+
+router.get('/', homepage);
+
+router.get('/recipe/:id', exploreRecipe );
+router.get('/categories', exploreCategories);
+router.get('/categories/:id', exploreCategoriesById);
+router.get('/explore-latest', exploreLatest);
+router.get('/explore-random', exploreRandom);
+
+router.post('/search', searchRecipe);
+
+router.get('/submit-recipe', submitRecipe);
+router.post('/submit-recipe', submitRecipeOnPost);
 
  
 module.exports = router;
