@@ -40,11 +40,13 @@ submitRecipeOnPost = async(req, res) => {
     
     await newRecipe.save();
 
-    req.flash('infoSubmit', 'Recipe has been added.')
     res.redirect('/submit-recipe');
   } catch (error) {
-    // res.json(error);
-    req.flash('infoErrors', error);
+    if(error.name === 'ValidationError'){
+      req.flash('infoErrors', error);
+    } else {
+      req.flash('infoSubmit', 'Recipe has been added.')
+    }
     res.redirect('/submit-recipe');
   }
 }
