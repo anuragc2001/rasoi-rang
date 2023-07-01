@@ -1,15 +1,10 @@
 const mongoose = require('mongoose');
 
-
-const url = String(process.env.MONGO_URI); 
-mongoose.connect(url, {
-    useNewUrlParser: true,
-    useUnifiedTopology: true
-});
-
-
-let db = mongoose.connection;
-db.on("error", console.error.bind(console, "connection error: "));
-db.once("open", function () {
-    console.log("Databse Connected");
-});
+mongoose.connect(process.env.MONGODB_URI, { useNewUrlParser: true, useUnifiedTopology: true })
+  .then(() => {
+    console.log('Connected to MongoDB Atlas');
+    // Perform further operations
+  })
+  .catch((error) => {
+    console.error('Failed to connect to MongoDB Atlas:', error);
+  });
